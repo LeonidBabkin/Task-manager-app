@@ -56,3 +56,27 @@ class TaskUpdateView(UpdateView):
             return redirect('tasks')
         else:
             return render(request, 'tasks/update_task.html', {'form': form})
+
+
+class TaskDeleteView(DeleteView):
+
+    def get(self, request, *args, **kwargs):
+        #  нужно найти user id текущего пользователя и сравнить его с user id автора задачи
+        current_user = request.user
+        task_id = kwargs.get('pk')
+        task = Task.objects.get(id=task_id)  # get this task from DB
+        user_id = task.author_id  # get user id of the task author
+        if user_id == current_user.id:
+            context = {}
+            context['task'] = task
+            return render(request, 'tasks/delete_task.html', context)
+        else:
+            messages.error(request, tr('Задачу может удалить только её автор'))
+            return redirect('tasks')
+
+    def post(self, request, *args, **kwargs):
+        task_id = kwargs.get('pk')
+        task = Task.objects.get(id=task_id)  # retrieve a status from db
+        task.delete()
+        messages.info(request, tr('Задача успешно удалена'))
+        return redirect('tasks')
