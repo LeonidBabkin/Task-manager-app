@@ -1,16 +1,16 @@
 from task_manager.statuses.forms import CreateStatusForm, UpdateStatusForm
 from django.utils.translation import gettext_lazy as tr
+from task_manager.statuses.models import TaskStatus
 from django.shortcuts import render, redirect
+from task_manager.tasks.models import Task
+from django.urls import reverse_lazy
+from django.contrib import messages
 from django.views.generic import (
     TemplateView,
     CreateView,
     UpdateView,
     DeleteView
 )
-from task_manager.statuses.models import TaskStatus
-from task_manager.tasks.models import Task
-from django.urls import reverse_lazy
-from django.contrib import messages
 
 
 class StatusesView(TemplateView):

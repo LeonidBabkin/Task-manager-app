@@ -5,7 +5,6 @@ from task_manager.statuses.models import TaskStatus
 from task_manager.users.models import NewUser
 
 
-
 class ShowTasksForm(forms.ModelForm):
 
     class Meta:
@@ -13,9 +12,18 @@ class ShowTasksForm(forms.ModelForm):
         fields = tr("__all__",)
         exclude = ('created_at', 'name', 'description', 'author')
  
+
 class CreateTaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
         exclude = ('created_at',)  # take all the fileds from the model Task
         fields = tr("__all__",)  # with excluded 'created_at' filed
+
+
+class UpdateTaskForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        exclude = ('created_at', 'author')
+        fields = tr("__all__",)
