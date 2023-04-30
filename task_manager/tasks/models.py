@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+from task_manager  import settings
 from task_manager.users.models import NewUser
 from task_manager.statuses.models import TaskStatus
 from django.utils.translation import gettext_lazy as tr

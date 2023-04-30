@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from task_manager.tasks.models import Task
 from django.urls import reverse_lazy
 from django.contrib import messages
+from task_manager.users.models import NewUser
 
 
 # @method_decorator(login_required, name='dispatch')
@@ -31,9 +32,15 @@ class TaskCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         form = CreateTaskForm(request.POST)
         if form.is_valid():
-            form.save()
+# That's useful when you get most of your model data from a form, but you need to populate 
+# some null=False fields with non-form data.Saving with commit=False gets you a model object, 
+# then you can add your extra data and save it.
+            post = form.save(commit=False)
+            # fill in the field author with with current user id
+            post.author = NewUser.objects.get(id=request.user.id)  
+            post.save()
             messages.info(request, tr('Задача успешно создана'))
-            return redirect(reverse_lazy('tasks'))
+            return redirect('tasks')
         else:
             return render(request, 'tasks/create_task.html', {'form': form})
         
@@ -49,7 +56,8 @@ class TaskUpdateView(UpdateView):
     def post(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
         task = Task.objects.get(id=task_id)
-        form = UpdateTaskForm(request.POST, instance=task)
+        # put data in the form to edit
+        form = UpdateTaskForm(request.POST, instance=task)  
         if form.is_valid():
             form.save()
             messages.info(request, tr('Задача успешно изменена'))
@@ -61,7 +69,7 @@ class TaskUpdateView(UpdateView):
 class TaskDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
-        #  нужно найти user id текущего пользователя и сравнить его с user id автора задачи
+    #  нужно найти user id текущего пользователя и сравнить его с user id автора задачи
         current_user = request.user
         task_id = kwargs.get('pk')
         task = Task.objects.get(id=task_id)  # get this task from DB

@@ -17,7 +17,7 @@ class CreateTaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        exclude = ('created_at',)  # take all the fileds from the model Task
+        exclude = ('created_at', 'author')  # take all the fileds from the model Task
         fields = tr("__all__",)  # with excluded 'created_at' filed
 
 
