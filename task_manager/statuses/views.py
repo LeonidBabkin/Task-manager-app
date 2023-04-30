@@ -8,6 +8,7 @@ from django.views.generic import (
     DeleteView
 )
 from task_manager.statuses.models import TaskStatus
+from task_manager.tasks.models import Task
 from django.urls import reverse_lazy
 from django.contrib import messages
 
@@ -61,26 +62,26 @@ class StatusUpdateView(UpdateView):
             return render(request, 'statuses/update_status.html', {'form': form})
 
 
-# class DeleteStatusView(DeleteView):
+class StatusDeleteView(DeleteView):
 
-#     def get(self, request, *args, **kwargs):
-#         status_id = kwargs.get('pk')
-#         context = {}
-#         status = TaskStatus.objects.get(id=status_id)
-#         context['status'] = status
-#         return render(request, 'delete_status.html', context)
+    def get(self, request, *args, **kwargs):
+        status_id = kwargs.get('pk')
+        context = {}
+        status = TaskStatus.objects.get(id=status_id)
+        context['status'] = status
+        return render(request, 'statuses/delete_status.html', context)
 
-#     def post(self, request, *args, **kwargs):
-#         status_id = kwargs.get('pk')
-#         context = {}
-#         status = TaskStatus.objects.get(id=status_id)
-#         if Task.objects.filter(status=status):
-#             messages.error(
-#                 self.request,
-#                 tr('Невозможно удалить статус, потому что он используется')
-#             )
-#             return redirect('statuses')
-#         context['status'] = status
-#         status.delete()
-#         messages.info(request, tr('Статус успешно удалён'))
-#         return redirect('statuses')
+    def post(self, request, *args, **kwargs):
+        status_id = kwargs.get('pk')
+        context = {}
+        status = TaskStatus.objects.get(id=status_id)  # retrieve a status from db
+        if Task.objects.filter(status=status):
+            messages.error(
+                self.request,
+                tr('Невозможно удалить статус, потому что он используется')
+            )
+            return redirect('statuses')
+        context['status'] = status
+        status.delete()
+        messages.info(request, tr('Статус успешно удалён'))
+        return redirect('statuses')
