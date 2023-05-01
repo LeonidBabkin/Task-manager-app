@@ -29,6 +29,8 @@ class Task(models.Model):
         related_name='executors',
         on_delete=models.PROTECT,
         blank=True,
+        default='',
+        null=False,  # makes the field look empty
         verbose_name=tr('Исполнитель')
     )
     created_at = models.DateTimeField(default=timezone.now)
