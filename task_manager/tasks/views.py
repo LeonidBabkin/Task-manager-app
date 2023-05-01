@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -10,7 +11,6 @@ from django.contrib import messages
 from task_manager.users.models import NewUser
 
 
-# @method_decorator(login_required, name='dispatch')
 class TasksView(TemplateView):
 
     def get(self, request, *args, **kwargs):
@@ -22,7 +22,6 @@ class TasksView(TemplateView):
         return render(request, 'tasks.html', context)
 
 
-# @method_decorator(login_required, name='dispatch')
 class TaskCreateView(CreateView):
 
     def get(self, request, *args, **kwargs):
@@ -88,3 +87,13 @@ class TaskDeleteView(DeleteView):
         task.delete()
         messages.info(request, tr('Задача успешно удалена'))
         return redirect('tasks')
+
+class TaskDetailView(DetailView):
+
+    def get(self, request, *args, **kwargs):
+        task_id = kwargs.get('pk')
+        template_name = 'tasks/detail_task.html'
+        task = Task.objects.get(id=task_id)
+        extra_context = {'title': tr('Просмотр задачи'), 'task': task,
+                     }
+        return render(request, template_name, extra_context)

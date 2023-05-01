@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='task',
             name='executor',
-            field=models.ForeignKey(blank=True, default='', on_delete=django.db.models.deletion.PROTECT, related_name='executors', to=settings.AUTH_USER_MODEL, verbose_name='Исполнитель'),
+            field=models.ForeignKey(blank=True, default='', null=False, on_delete=django.db.models.deletion.PROTECT, related_name='executors', to=settings.AUTH_USER_MODEL, verbose_name='Исполнитель'),
         ),
     ]
