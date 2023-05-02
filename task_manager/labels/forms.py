@@ -18,3 +18,11 @@ class CreateLabelForm(forms.ModelForm):
         model = Label
         exclude = ('created_at',)  # take all the fileds from the model Task
         fields = tr("__all__",)  # with excluded 'created_at' filed
+
+
+class UpdateLabelForm(forms.ModelForm):
+
+    class Meta:
+        model = Label
+        exclude = ('created_at',)
+        fields = tr("__all__",)

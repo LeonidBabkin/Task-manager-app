@@ -81,7 +81,6 @@ class StatusDeleteView(DeleteView):
                 tr('Невозможно удалить статус, потому что он используется')
             )
             return redirect('statuses')
-        context['status'] = status
         status.delete()
         messages.info(request, tr('Статус успешно удалён'))
         return redirect('statuses')

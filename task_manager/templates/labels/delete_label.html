@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+      
+    <h1 class="my-4">
+{% trans 'Удаление метки' %}     
+
+    </h1>
+    
+<p>{% trans 'Вы уверены, что хотите удалить' %} {{ label.name }}?</p>
+<form method="post">
+{% csrf_token %}
+<input type="hidden">
+<input class="btn btn-danger" type="submit" value="Да, удалить">
+</form>
+
+  </div>
+{% endblock %}

@@ -1,7 +1,8 @@
-from django.contrib.auth import logout
+from django.views.generic import TemplateView, DeleteView
 from django.utils.translation import gettext_lazy as tr
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, DeleteView
+from task_manager.tasks.models import Task
+from django.contrib.auth import logout
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
@@ -46,7 +47,7 @@ class UserUpdateView(View):
         else:
             messages.error(request, tr(
                 'У вас нет прав для изменения другого пользователя.'))
-            return redirect('home')
+            return redirect('users')
 
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')  # take the pk of a user passed on from the users.html as user.id
@@ -76,9 +77,12 @@ class UserDeleteView(DeleteView):
     def post(self, request, *args, **kwargs):
         current_user = request.user
         user_id = kwargs.get('pk')
-        if current_user.id == user_id:
+        if current_user.id == user_id and not Task.objects.filter(author_id=request.user.pk):
             user = models.NewUser.objects.get(id=user_id)
             logout(request)
             user.delete()
             messages.info(request, tr('Пользователь успешно удалён'))
+            return redirect('users')
+        else:
+            messages.error(request, tr('Невозможно удалить пользователя, потому что он используется'))
             return redirect('users')

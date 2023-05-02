@@ -10,7 +10,6 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from task_manager.users.models import NewUser
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-# from task_manager.utils import NoPermissionMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 
@@ -25,26 +24,39 @@ class TasksView(TemplateView):
         return render(request, 'tasks.html', context)
 
 
-class TaskCreateView(CreateView):
+# class TaskCreateView(CreateView):
 
-    def get(self, request, *args, **kwargs):
-        form = CreateTaskForm()
-        return render(request, 'tasks/create_task.html', {'form': form})
+#     def get(self, request, *args, **kwargs):
+#         form = CreateTaskForm()
+#         return render(request, 'tasks/create_task.html', {'form': form})
 
-    def post(self, request, *args, **kwargs):
-        form = CreateTaskForm(request.POST)
-        if form.is_valid():
-# That's useful when you get most of your model data from a form, but you need to populate 
-# some null=False fields with non-form data.Saving with commit=False gets you a model object, 
-# then you can add your extra data and save it.
-            post = form.save(commit=False)
-            # fill in the field author with with current user id
-            post.author = NewUser.objects.get(id=request.user.id)
-            post.save()
-            messages.info(request, tr('Задача успешно создана'))
-            return redirect('tasks')
-        else:
-            return render(request, 'tasks/create_task.html', {'form': form})
+#     def post(self, request, *args, **kwargs):
+#         form = CreateTaskForm(request.POST)
+#         if form.is_valid():
+# # That's useful when you get most of your model data from a form, but you need to populate 
+# # some null=False fields with non-form data.Saving with commit=False gets you a model object, 
+# # then you can add your extra data and save it.
+#             post = form.save(commit=False)
+#             # fill in the field author with with current user id
+#             post.author = NewUser.objects.get(id=request.user.id)
+#             post.save()
+#             messages.info(request, tr('Задача успешно создана'))
+#             return redirect('tasks')
+#         else:
+#             return render(request, 'tasks/create_task.html', {'form': form})
+        
+
+class TaskCreateView( LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Task
+    form_class = CreateTaskForm
+    template_name = 'tasks/create_task.html'
+    success_url = reverse_lazy('tasks')
+    success_message = tr('Задача успешно создана')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)  
+
 
 
 class TaskUpdateView(UpdateView):
