@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from task_manager  import settings
 from task_manager.users.models import NewUser
+from task_manager.labels.models import Label
 from task_manager.statuses.models import TaskStatus
 from django.utils.translation import gettext_lazy as tr
 
@@ -33,6 +34,11 @@ class Task(models.Model):
         null=False,  # makes the field look empty
         verbose_name=tr('Исполнитель')
     )
+    labels = models.ManyToManyField(
+        Label,
+        verbose_name=tr('Метка'),
+        blank=True
+      )  
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

@@ -9,6 +9,9 @@ from task_manager.tasks.models import Task
 from django.urls import reverse_lazy
 from django.contrib import messages
 from task_manager.users.models import NewUser
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+# from task_manager.utils import NoPermissionMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class TasksView(TemplateView):
@@ -36,13 +39,13 @@ class TaskCreateView(CreateView):
 # then you can add your extra data and save it.
             post = form.save(commit=False)
             # fill in the field author with with current user id
-            post.author = NewUser.objects.get(id=request.user.id)  
+            post.author = NewUser.objects.get(id=request.user.id)
             post.save()
             messages.info(request, tr('Задача успешно создана'))
             return redirect('tasks')
         else:
             return render(request, 'tasks/create_task.html', {'form': form})
-        
+
 
 class TaskUpdateView(UpdateView):
 

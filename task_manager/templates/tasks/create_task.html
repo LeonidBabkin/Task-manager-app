@@ -14,17 +14,13 @@
 
     </h1>
 
-<form method="post">
-{% csrf_token %}
-<input type="hidden">
-{% bootstrap_form form %}
-{% for error in form.errors %}
-<small class="form-text", style=" color: red;">{{error}}</small>
-{% endfor %}
-<div class="form-group">
-  <input class="btn btn-primary" type="submit" value="Создать">
-</div>
-</form>
+  <form class="form" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% buttons %}
+      <button class="btn btn-info" type="submit">{% translate "Создать" %}</button>
+      {% endbuttons %}
+  </form>
 
   </div>
   {% endblock %}
