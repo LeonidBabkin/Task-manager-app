@@ -11,15 +11,19 @@ from django.contrib import messages
 from task_manager.users.models import NewUser
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from task_manager.filters import TaskFilter
 
 
 class TasksView(TemplateView):
-
+    
     def get(self, request, *args, **kwargs):
+        task_filter = TaskFilter(request.GET, queryset=Task.objects.all())
         form = ShowTasksForm()
         context = {
-                'tasks': Task.objects.all().order_by('id'),
-                'form': form
+            'form': task_filter.form,
+            'tasks': task_filter.qs,
+                # 'tasks': Task.objects.all().order_by('id'),
+                # 'form': form
             }
         return render(request, 'tasks.html', context)
 

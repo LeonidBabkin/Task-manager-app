@@ -3,7 +3,6 @@ from django.utils.translation import gettext_lazy as tr
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views import View
-# from django.urls import reverse_lazy
 from django.contrib import messages
 from task_manager.users.models import NewUser
 from . import forms

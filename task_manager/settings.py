@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'task_manager.labels',
     'bootstrap4',
     'bootstrapform',
+    'django_filters',
     # 'users.apps.UsersConfig',
     # 'pytest',
     # 'flake8',
