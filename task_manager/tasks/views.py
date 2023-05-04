@@ -1,32 +1,36 @@
-from typing import Any, Dict
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as tr
-from task_manager.tasks.forms import CreateTaskForm, ShowTasksForm, UpdateTaskForm
+from task_manager.tasks.forms import CreateTaskForm, UpdateTaskForm
 from django.shortcuts import render, redirect
 from task_manager.tasks.models import Task
 from django.urls import reverse_lazy
 from django.contrib import messages
-from task_manager.users.models import NewUser
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from task_manager.filters import TaskFilter
+from django_filters.views import FilterView
 
 
-class TasksView(TemplateView):
-    
+class TasksView(TemplateView, FilterView):
+
     def get(self, request, *args, **kwargs):
-        task_filter = TaskFilter(request.GET, queryset=Task.objects.all())
-        form = ShowTasksForm()
-        context = {
+        box = request.GET.get('self_tasks', None)     
+        if box == None:
+            task_filter = TaskFilter(request.GET, queryset=Task.objects.all())
+            context = {
             'form': task_filter.form,
             'tasks': task_filter.qs,
-                # 'tasks': Task.objects.all().order_by('id'),
-                # 'form': form
+            'request': request.user,
             }
-        return render(request, 'tasks.html', context)
-
+            return render(request, 'tasks.html', context)
+        elif box == 'on':
+            task_filter = TaskFilter(request.GET, queryset=Task.objects.filter(author=request.user))
+            context = {
+            'form': task_filter.form,
+            'tasks': task_filter.qs,
+            }
+            return render(request, 'tasks.html', context)
+        
 
 # class TaskCreateView(CreateView):
 
@@ -60,7 +64,6 @@ class TaskCreateView( LoginRequiredMixin, SuccessMessageMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)  
-
 
 
 class TaskUpdateView(UpdateView):
@@ -106,6 +109,7 @@ class TaskDeleteView(DeleteView):
         task.delete()
         messages.info(request, tr('Задача успешно удалена'))
         return redirect('tasks')
+
 
 class TaskDetailView(DetailView):
 

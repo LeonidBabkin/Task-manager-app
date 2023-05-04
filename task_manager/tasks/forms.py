@@ -6,14 +6,6 @@ from task_manager.users.models import NewUser
 from task_manager.labels.models import Label
 
 
-class ShowTasksForm(forms.ModelForm):
-
-    class Meta:
-        model = Task
-        fields = tr("__all__",)
-        exclude = ('created_at', 'name', 'description', 'author')
- 
-
 class CreateTaskForm(forms.ModelForm):
 
     class Meta:
