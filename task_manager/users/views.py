@@ -28,7 +28,7 @@ class UserRegisterView(View):
         form = forms.CreateUserForm(request.POST)
         if form.is_valid():  # Если данные корректные, то сохраняем данные формы
             form.save()
-            messages.success(request, "Пользователь зарегистрирован")
+            messages.success(request, "Пользователь успешно зарегистрирован")
             return redirect(reverse_lazy('login'))  # Редирект на указанный маршрут
         messages.error(request, 'Ошибка в регистрации. Попробуйте снова')
         context['registration_form'] = form
