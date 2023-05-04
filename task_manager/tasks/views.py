@@ -11,7 +11,7 @@ from task_manager.filters import TaskFilter
 from django_filters.views import FilterView
 
 
-class TasksView(TemplateView, FilterView):
+class TasksView(TemplateView, LoginRequiredMixin, FilterView):
 
     def get(self, request, *args, **kwargs):
         box = request.GET.get('self_tasks', None)
@@ -66,7 +66,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
@@ -88,9 +88,10 @@ class TaskUpdateView(UpdateView):
             return render(request, 'tasks/update_task.html', {'form': form})
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
+
         # нужно найти user id текущего пользователя и сравнить его с user id автора задачи
         current_user = request.user
         task_id = kwargs.get('pk')
@@ -112,7 +113,7 @@ class TaskDeleteView(DeleteView):
         return redirect('tasks')
 
 
-class TaskDetailView(DetailView):
+class TaskDetailView(LoginRequiredMixin, DetailView):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
