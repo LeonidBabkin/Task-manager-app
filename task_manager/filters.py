@@ -13,7 +13,7 @@ class TaskFilter(django_filters.FilterSet):
         exclude = ['name',]
 
     labels = django_filters.ModelChoiceFilter(
-        label=tr('Label'),
+        label=tr('Метка'),
         queryset=Label.objects.all()
     )
 
