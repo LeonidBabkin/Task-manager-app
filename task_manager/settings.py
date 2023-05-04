@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import rollbar
 from pathlib import Path
 from dotenv import load_dotenv
 from urllib.parse import urlparse
@@ -39,6 +40,9 @@ DB_PASS = parsed_url.password
 DEBUG = os.getenv('DEBUG', False)
 ALLOWED_HOSTS = ['*', 'webserver', 'localhost', '27.0.0.1', DB_HOST]
 SECRET_KEY = os.getenv('SECRET_KEY')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://task-manager-app-kzsy.onrender.com']
 
 # Application definition
 
@@ -76,6 +80,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -139,9 +144,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = (
+    ('en-us', tr('English')),
+    ('ru-ru', tr('Russian')),
+)
+
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -160,8 +171,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.NewUser'
 
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
 
-LANGUAGES = (
-    ('en-us', tr('English')),
-    ('ru', tr('Russian')),
-)
+rollbar.init(**ROLLBAR)
