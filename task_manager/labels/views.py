@@ -32,7 +32,7 @@ class LabelCreateView(CreateView):
         if form.is_valid():
             form.save()
             messages.info(request, tr('Метка успешно создана'))
-            return redirect('home')
+            return redirect('labels')
         else:
             return render(request, 'labels/create_label.html', {'form': form})
 
