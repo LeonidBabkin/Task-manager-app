@@ -22,5 +22,6 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.CheckboxInput(), method='get_queryset'
     )
     # get queryset(data) from the task_filter.form
+
     def get_queryset(self, queryset, name, value):
         return queryset

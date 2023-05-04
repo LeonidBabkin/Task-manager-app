@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.utils.translation import gettext_lazy as tr
 from task_manager.users.models import NewUser
 

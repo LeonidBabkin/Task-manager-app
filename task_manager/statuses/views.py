@@ -73,7 +73,6 @@ class StatusDeleteView(DeleteView):
 
     def post(self, request, *args, **kwargs):
         status_id = kwargs.get('pk')
-        context = {}
         status = TaskStatus.objects.get(id=status_id)  # retrieve a status from db
         if Task.objects.filter(status=status):
             messages.error(

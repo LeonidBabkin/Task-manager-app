@@ -84,5 +84,6 @@ class UserDeleteView(DeleteView):
             messages.info(request, tr('Пользователь успешно удалён'))
             return redirect('users')
         else:
-            messages.error(request, tr('Невозможно удалить пользователя, потому что он используется'))
+            messages.error(request, tr('Невозможно удалить пользователя ',
+                                       'потому что он используется'))
             return redirect('users')

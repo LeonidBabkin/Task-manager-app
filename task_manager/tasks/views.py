@@ -14,23 +14,23 @@ from django_filters.views import FilterView
 class TasksView(TemplateView, FilterView):
 
     def get(self, request, *args, **kwargs):
-        box = request.GET.get('self_tasks', None)     
-        if box == None:
+        box = request.GET.get('self_tasks', None)
+        if box is None:
             task_filter = TaskFilter(request.GET, queryset=Task.objects.all())
             context = {
-            'form': task_filter.form,
-            'tasks': task_filter.qs,
-            'request': request.user,
+                'form': task_filter.form,
+                'tasks': task_filter.qs,
+                'request': request.user,
             }
             return render(request, 'tasks.html', context)
         elif box == 'on':
             task_filter = TaskFilter(request.GET, queryset=Task.objects.filter(author=request.user))
             context = {
-            'form': task_filter.form,
-            'tasks': task_filter.qs,
+                'form': task_filter.form,
+                'tasks': task_filter.qs,
             }
             return render(request, 'tasks.html', context)
-        
+
 
 # class TaskCreateView(CreateView):
 
@@ -41,8 +41,8 @@ class TasksView(TemplateView, FilterView):
 #     def post(self, request, *args, **kwargs):
 #         form = CreateTaskForm(request.POST)
 #         if form.is_valid():
-# # That's useful when you get most of your model data from a form, but you need to populate 
-# # some null=False fields with non-form data.Saving with commit=False gets you a model object, 
+# # That's useful when you get most of your model data from a form, but you need to populate
+# # some null=False fields with non-form data.Saving with commit=False gets you a model object,
 # # then you can add your extra data and save it.
 #             post = form.save(commit=False)
 #             # fill in the field author with with current user id
@@ -52,9 +52,9 @@ class TasksView(TemplateView, FilterView):
 #             return redirect('tasks')
 #         else:
 #             return render(request, 'tasks/create_task.html', {'form': form})
-        
 
-class TaskCreateView( LoginRequiredMixin, SuccessMessageMixin, CreateView):
+
+class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     form_class = CreateTaskForm
     template_name = 'tasks/create_task.html'
@@ -63,7 +63,7 @@ class TaskCreateView( LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)  
+        return super().form_valid(form)
 
 
 class TaskUpdateView(UpdateView):
@@ -78,7 +78,8 @@ class TaskUpdateView(UpdateView):
         task_id = kwargs.get('pk')
         task = Task.objects.get(id=task_id)
         # put data in the form to edit
-        form = UpdateTaskForm(request.POST, instance=task)  
+
+        form = UpdateTaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
             messages.info(request, tr('Задача успешно изменена'))
@@ -90,7 +91,7 @@ class TaskUpdateView(UpdateView):
 class TaskDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
-    #  нужно найти user id текущего пользователя и сравнить его с user id автора задачи
+        # нужно найти user id текущего пользователя и сравнить его с user id автора задачи
         current_user = request.user
         task_id = kwargs.get('pk')
         task = Task.objects.get(id=task_id)  # get this task from DB
@@ -117,6 +118,5 @@ class TaskDetailView(DetailView):
         task_id = kwargs.get('pk')
         template_name = 'tasks/detail_task.html'
         task = Task.objects.get(id=task_id)
-        extra_context = {'title': tr('Просмотр задачи'), 'task': task,
-                     }
+        extra_context = {'title': tr('Просмотр задачи'), 'task': task}
         return render(request, template_name, extra_context)

@@ -1,13 +1,12 @@
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.utils.translation import gettext_lazy as tr
 from task_manager.labels.forms import CreateLabelForm, ShowLabelsForm, UpdateLabelForm
 from django.shortcuts import render, redirect
 from task_manager.tasks.models import Task
 from task_manager.labels.models import Label
-from task_manager.users.models import NewUser
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 
 
@@ -20,7 +19,7 @@ class LabelsView(TemplateView):
                 'form': form
             }
         return render(request, 'labels.html', context)
-    
+
 
 class LabelCreateView(CreateView):
 
@@ -48,7 +47,7 @@ class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
-    
+
 
 class LabelDeleteView(DeleteView):
 
