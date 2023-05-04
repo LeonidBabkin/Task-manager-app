@@ -8,3 +8,4 @@ psycopg2-binary==2.9.6
 pyflakes==3.0.1
 python-dotenv==1.0.0
 django-filter==23.2
+rollbar==0.16.3
