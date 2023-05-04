@@ -68,5 +68,5 @@ class LabelDeleteView(DeleteView):
             )
             return redirect('labels')
         label.delete()
-        messages.info(request, tr('Метка успешно удалёна'))
+        messages.info(request, tr('Метка успешно удалена'))
         return redirect('labels')
