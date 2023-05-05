@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django_filters.views import FilterView
 from task_manager.tasks.forms import TasksFilterForm
+from django.urls import reverse
 
 
 class TasksView(FilterView, LoginRequiredMixin):
@@ -45,11 +46,15 @@ class TaskCreateView(CreateView, SuccessMessageMixin, LoginRequiredMixin):
     form_class = CreateTaskForm
     template_name = 'tasks/create_task.html'
     success_url = reverse_lazy('tasks')
-    success_message = tr('Задача успешно создана')
+    # success_message = tr('Задача успешно создана')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        messages.success(self.request, tr('Задача успешно создана'))
+        return reverse("tasks")
 
 
 class TaskUpdateView(UpdateView, LoginRequiredMixin):

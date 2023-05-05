@@ -24,7 +24,7 @@ class UpdateTaskForm(forms.ModelForm):
 class TasksFilterForm(FilterSet):
 
     labels = ModelChoiceFilter(field_name='label', label=tr('Метка'),
-                               queryset=Label.objects.all(),
+                               queryset=Label.objects.all().order_by('pk'),
                                )
     self_tasks = BooleanFilter(
         label=tr('Только свои задачи'),
@@ -35,7 +35,7 @@ class TasksFilterForm(FilterSet):
     def only_self(self, queryset, name, value):
         result = queryset.filter(author=self.request.user).order_by('pk')
         if value:
-            return result
+            return result.order_by('pk')
         return queryset.order_by('pk')
 
     class Meta:
