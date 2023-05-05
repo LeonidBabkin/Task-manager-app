@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, DeleteView
 from django.utils.translation import gettext_lazy as tr
 from django.shortcuts import render, redirect
@@ -35,7 +36,7 @@ class UserRegisterView(View):
         return render(request, 'users/register.html', context)
 
 
-class UserUpdateView(View):
+class UserUpdateView(View, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         current_user = request.user  # take a logged in user
@@ -61,7 +62,7 @@ class UserUpdateView(View):
             return render(request, 'users/update_user.html', {'form': form})
 
 
-class UserDeleteView(DeleteView):
+class UserDeleteView(DeleteView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         current_user = request.user

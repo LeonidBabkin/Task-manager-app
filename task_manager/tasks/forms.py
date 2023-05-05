@@ -1,7 +1,8 @@
 from django import forms
 from django.utils.translation import gettext as tr
 from task_manager.tasks.models import Task
-
+from task_manager.tasks.models import Label
+from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
 
 class CreateTaskForm(forms.ModelForm):
 
@@ -18,3 +19,23 @@ class UpdateTaskForm(forms.ModelForm):
         model = Task
         exclude = ('created_at', 'author')
         fields = tr("__all__",)
+
+
+class TasksFilterForm(FilterSet):
+    labels = ModelChoiceFilter(label=tr('Метка'),
+                               queryset=Label.objects.all())
+    self_tasks = BooleanFilter(
+        label=tr('Только свои задачи'),
+        widget=forms.CheckboxInput(),
+        method='only_self'
+    )
+
+    def only_self(self, queryset, name, value):
+        result = queryset.filter(author=self.request.user).order_by('pk')
+        if value:
+            return result
+        return queryset.order_by('pk')
+
+    class Meta:
+        model = Task
+        fields = ['status', 'executor', 'labels']

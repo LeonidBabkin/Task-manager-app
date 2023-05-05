@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django.utils.translation import gettext_lazy as tr
 from task_manager.tasks.forms import CreateTaskForm, UpdateTaskForm
 from django.shortcuts import render, redirect
@@ -7,30 +7,16 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from task_manager.filters import TaskFilter
 from django_filters.views import FilterView
+from task_manager.tasks.forms import TasksFilterForm
 
 
-class TasksView(TemplateView, LoginRequiredMixin, FilterView):
-
-    def get(self, request, *args, **kwargs):
-        box = request.GET.get('self_tasks', None)
-        if box is None:
-            task_filter = TaskFilter(request.GET, queryset=Task.objects.all())
-            context = {
-                'form': task_filter.form,
-                'tasks': task_filter.qs,
-                'request': request.user,
-            }
-            return render(request, 'tasks.html', context)
-        elif box == 'on':
-            task_filter = TaskFilter(request.GET, queryset=Task.objects.filter(author=request.user))
-            context = {
-                'form': task_filter.form,
-                'tasks': task_filter.qs,
-            }
-            return render(request, 'tasks.html', context)
-
+class TasksView(FilterView, LoginRequiredMixin):
+    model = Task
+    filterset_class = TasksFilterForm
+    template_name = 'tasks.html'
+    context_object_name = "tasks"
+    extra_context = {'title': tr('Tasks')}
 
 # class TaskCreateView(CreateView):
 
@@ -54,7 +40,7 @@ class TasksView(TemplateView, LoginRequiredMixin, FilterView):
 #             return render(request, 'tasks/create_task.html', {'form': form})
 
 
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(CreateView, SuccessMessageMixin, LoginRequiredMixin):
     model = Task
     form_class = CreateTaskForm
     template_name = 'tasks/create_task.html'
@@ -66,7 +52,7 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(UpdateView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
@@ -88,7 +74,7 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
             return render(request, 'tasks/update_task.html', {'form': form})
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(DeleteView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
 
@@ -113,7 +99,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
         return redirect('tasks')
 
 
-class TaskDetailView(LoginRequiredMixin, DetailView):
+class TaskDetailView(DetailView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         task_id = kwargs.get('pk')
