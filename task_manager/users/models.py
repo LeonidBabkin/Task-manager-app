@@ -10,4 +10,4 @@ class NewUser(AbstractUser):
     age = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f'{self.last_name}, {self.first_name}'
+        return f'{self.last_name} {self.first_name}'
