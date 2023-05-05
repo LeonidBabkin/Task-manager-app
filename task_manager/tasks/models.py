@@ -33,8 +33,10 @@ class Task(models.Model):
     )
     labels = models.ManyToManyField(
         Label,
-        verbose_name=tr('Метка'),
-        blank=True
+        verbose_name=tr('Метки'),
+        blank=True,
+        # through='TaskLabelRel',
+        # through_fields=('task','label')
       )
     created_at = models.DateTimeField(default=timezone.now)
 

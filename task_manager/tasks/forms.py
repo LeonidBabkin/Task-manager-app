@@ -22,8 +22,10 @@ class UpdateTaskForm(forms.ModelForm):
 
 
 class TasksFilterForm(FilterSet):
-    labels = ModelChoiceFilter(label=tr('Метка'),
-                               queryset=Label.objects.all())
+
+    labels = ModelChoiceFilter(field_name='label', label=tr('Метка'),
+                               queryset=Label.objects.all(),
+                               )
     self_tasks = BooleanFilter(
         label=tr('Только свои задачи'),
         widget=forms.CheckboxInput(),
