@@ -1,4 +1,3 @@
-from django.urls import reverse
 from django.db import models
 from django.utils import timezone
 from task_manager.users.models import NewUser
@@ -8,7 +7,7 @@ from django.utils.translation import gettext_lazy as tr
 
 
 class Task(models.Model):
-    name = models.CharField(verbose_name=tr('Имя'), max_length=120,  blank=False)
+    name = models.CharField(verbose_name=tr('Имя'), max_length=120, blank=False)
     description = models.TextField(verbose_name=tr('Описание'), max_length=1000, blank=True)
     status = models.ForeignKey(
         TaskStatus,
@@ -37,7 +36,7 @@ class Task(models.Model):
         through_fields=('task', 'label'),
         verbose_name=tr('Метки'),
         blank=True,
-      )
+    )
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

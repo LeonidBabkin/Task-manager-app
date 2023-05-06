@@ -4,6 +4,7 @@ from task_manager.tasks.models import Task
 from task_manager.tasks.models import Label
 from django_filters import FilterSet, BooleanFilter, ModelChoiceFilter
 
+
 class CreateTaskForm(forms.ModelForm):
 
     class Meta:

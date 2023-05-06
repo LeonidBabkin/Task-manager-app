@@ -9,7 +9,7 @@ class Label(models.Model):
 
     class Meta:
         verbose_name = tr('Метка')
-        verbose_name_plural =tr('Метки')
+        verbose_name_plural = tr('Метки')
 
     def __str__(self):
         return self.name

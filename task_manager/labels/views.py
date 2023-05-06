@@ -15,9 +15,9 @@ class LabelsView(TemplateView):
     def get(self, request, *args, **kwargs):
         form = ShowLabelsForm()
         context = {
-                'labels': Label.objects.all().order_by('id'),
-                'form': form
-            }
+            'labels': Label.objects.all().order_by('id'),
+            'form': form
+        }
         return render(request, 'labels.html', context)
 
 

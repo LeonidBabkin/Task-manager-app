@@ -31,8 +31,8 @@ class CreateUserForm(UserCreationForm):
                                            'autofocus': True,
                                            'class': 'form-control', }),
                                error_messages={'unique': tr(
-                                                'Пользователь с таким именем '
-                                                'уже есть')})
+                                               'Пользователь с таким именем '
+                                               'уже есть')})
     password1 = forms.CharField(label=tr('Пароль'),
                                 label_suffix='',
                                 max_length=100,
