@@ -27,9 +27,9 @@ class CreateUserForm(UserCreationForm):
                                             'Не более 150 символов. '
                                             'Только буквы, цифры и символы @/./+/-/_.'),
                                widget=forms.TextInput(
-                                    attrs={'placeholder': tr('Имя пользователя'),
-                                           'autofocus': True,
-                                           'class': 'form-control', }),
+        attrs={'placeholder': tr('Имя пользователя'),
+               'autofocus': True,
+               'class': 'form-control', }),
                                error_messages={'unique': tr(
                                                'Пользователь с таким именем '
                                                'уже есть')})
