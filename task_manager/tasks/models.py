@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from django.utils import timezone
 from task_manager.users.models import NewUser
@@ -18,27 +19,31 @@ class Task(models.Model):
     )
     author = models.ForeignKey(
         NewUser,
-        related_name='authors',
+        related_name='author',
         on_delete=models.PROTECT,
-        blank=False,
         verbose_name=tr('Автор')
     )
     executor = models.ForeignKey(
         NewUser,
-        related_name='executors',
+        related_name='executor',
         on_delete=models.PROTECT,
+        verbose_name=tr('Исполнитель'),
         blank=True,
-        # null=False,  # makes the field look empty
-        verbose_name=tr('Исполнитель')
     )
     labels = models.ManyToManyField(
         Label,
+        related_name='labels',
+        through='TaskLabelRelation',
+        through_fields=('task', 'label'),
         verbose_name=tr('Метки'),
         blank=True,
-        # through='TaskLabelRel',
-        # through_fields=('task','label')
       )
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
+
+
+class TaskLabelRelation(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)
