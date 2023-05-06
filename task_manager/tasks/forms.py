@@ -23,7 +23,7 @@ class UpdateTaskForm(forms.ModelForm):
 
 class TasksFilterForm(FilterSet):
 
-    labels = ModelChoiceFilter(field_name='label', label=tr('Метка'),
+    labels = ModelChoiceFilter(label=tr('Метка'),
                                queryset=Label.objects.all().order_by('pk'),
                                )
     self_tasks = BooleanFilter(
