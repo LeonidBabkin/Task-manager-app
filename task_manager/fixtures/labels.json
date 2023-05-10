@@ -1,0 +1,59 @@
+[
+    {
+        "model": "labels.label",
+        "pk": 1,
+        "fields": {
+            "name": "Label 3",
+            "created_at": "2023-05-01T12:35:18.243Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 2,
+        "fields": {
+            "name": "Завершился с ошибкой.",
+            "created_at": "2023-05-01T12:36:12.475Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 3,
+        "fields": {
+            "name": "Готов к полноценной работе.",
+            "created_at": "2023-05-01T12:47:26.277Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 4,
+        "fields": {
+            "name": "Требует исправления ошибок. Тесты не закончены!",
+            "created_at": "2023-05-01T13:00:14.825Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 7,
+        "fields": {
+            "name": "На контроле у руководителя!",
+            "created_at": "2023-05-02T11:58:13.675Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 9,
+        "fields": {
+            "name": "Имя метки",
+            "created_at": "2023-05-05T11:29:06.497Z"
+        }
+    },
+    {
+        "model": "labels.label",
+        "pk": 10,
+        "fields": {
+            "name": "Название",
+            "created_at": "2023-05-06T11:45:31.530Z"
+        }
+    }
+    ]
+    

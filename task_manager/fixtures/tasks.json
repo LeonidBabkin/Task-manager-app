@@ -1,0 +1,147 @@
+[
+    {
+        "model": "tasks.task",
+        "pk": 5,
+        "fields": {
+            "name": "Диспетчер задач!",
+            "description": "Проект который помогает управлять рабочим временем",
+            "status": 1,
+            "author": 1,
+            "executor": 1,
+            "created_at": "2023-04-29T15:25:11.064Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 6,
+        "fields": {
+            "name": "Решатель проблем",
+            "description": "Решает трудности",
+            "status": 1,
+            "author": 1,
+            "executor": 4,
+            "created_at": "2023-04-29T15:30:39.177Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 7,
+        "fields": {
+            "name": "Построить Париж",
+            "description": "Строить неспеша!",
+            "status": 1,
+            "author": 1,
+            "executor": 4,
+            "created_at": "2023-04-30T08:11:52Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 9,
+        "fields": {
+            "name": "Счастливое настоящее  - это работа над ним самим!",
+            "description": "Претворение в жизнь мира и благоденствия в России",
+            "status": 2,
+            "author": 1,
+            "executor": 5,
+            "created_at": "2023-04-30T13:56:26.182Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 22,
+        "fields": {
+            "name": "Строительный проект",
+            "description": "Строим каток в Воронеже!",
+            "status": 1,
+            "author": 5,
+            "executor": 4,
+            "created_at": "2023-04-30T18:28:05.214Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 29,
+        "fields": {
+            "name": "В Питере безоблачно",
+            "description": "Клуб воздухоплавателей готов к открытию!",
+            "status": 3,
+            "author": 5,
+            "executor": null,
+            "created_at": "2023-05-01T07:58:40.951Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 30,
+        "fields": {
+            "name": "Счастливое настоящее!",
+            "description": "Красота!",
+            "status": 1,
+            "author": 5,
+            "executor": 5,
+            "created_at": "2023-05-01T07:59:24.258Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 35,
+        "fields": {
+            "name": "ЖК Лебединое Озеро",
+            "description": "Строим ЖК",
+            "status": 1,
+            "author": 1,
+            "executor": 4,
+            "created_at": "2023-05-01T14:53:13.432Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 36,
+        "fields": {
+            "name": "Промышленный проект",
+            "description": "Завод переносится за город",
+            "status": 3,
+            "author": 1,
+            "executor": null,
+            "created_at": "2023-05-01T14:55:24.239Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 52,
+        "fields": {
+            "name": "Оцифрование г. Казани",
+            "description": "Оцифровкой для лучшего благоустройства занимается фирма из г. Иннополис. Сумма контракт 10 миллионов рублей.",
+            "status": 1,
+            "author": 1,
+            "executor": 5,
+            "created_at": "2023-05-02T11:54:25.811Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 54,
+        "fields": {
+            "name": "Лечебный узел обслуживания",
+            "description": "Информационная карточка больного.",
+            "status": 1,
+            "author": 1,
+            "executor": 7,
+            "created_at": "2023-05-03T08:23:56.566Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 71,
+        "fields": {
+            "name": "Строительный проект",
+            "description": "xdw",
+            "status": 2,
+            "author": 1,
+            "executor": 4,
+            "created_at": "2023-05-05T15:24:40.706Z"
+        }
+    }
+    ]
+    

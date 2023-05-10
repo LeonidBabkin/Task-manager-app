@@ -28,6 +28,7 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         verbose_name=tr('Исполнитель'),
         blank=True,
+        null=False
     )
     labels = models.ManyToManyField(
         Label,

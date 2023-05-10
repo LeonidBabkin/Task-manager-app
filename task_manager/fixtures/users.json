@@ -1,0 +1,129 @@
+[
+    {
+        "model": "users.newuser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$4hzqvdjjkad2VaHnx4jTue$fQPYhSlztyrSN7Cv1kBZuIafwo8VpDoR1h7iOlefIqo=",
+            "last_login": "2023-05-09T17:21:44.348Z",
+            "is_superuser": false,
+            "username": "LevRus",
+            "first_name": "Leonid",
+            "last_name": "Babkin",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-04-25T16:29:01.893Z",
+            "password1": "leo2015trier",
+            "password2": "leo2015trier",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.newuser",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$XN62zR9PiSUxgVzfn28n2I$QzstgjrFgWIUkVPwRw4CdRFHUSbv435sXSRlqmFrxIU=",
+            "last_login": "2023-05-06T11:20:09.881Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2023-04-28T08:39:49.214Z",
+            "password1": "",
+            "password2": "",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.newuser",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$tfEeFt7zvusCCnaWkOao4s$5RZhVx6ggXGveKsRXHGKRkcxOoMb7Wsn5QCRfGVt14k=",
+            "last_login": "2023-04-30T11:04:46.912Z",
+            "is_superuser": false,
+            "username": "Ivan_user",
+            "first_name": "Ivan",
+            "last_name": "Ivanov",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-04-29T15:20:34.719Z",
+            "password1": "leo2015trier",
+            "password2": "leo2015trier",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.newuser",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$oW9wgQLqUekDLE7dFdFoHp$mh5NVAACzTM8G7UE3uZ3t/OcuPG+eru7Qv437QBu7Mk=",
+            "last_login": "2023-05-01T14:45:14.538Z",
+            "is_superuser": false,
+            "username": "Dimon",
+            "first_name": "Dima",
+            "last_name": "Dmitriev",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-04-30T13:52:38.665Z",
+            "password1": "leo2015trier",
+            "password2": "leo2015trier",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.newuser",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$8JeqBEZ2lMmDJ5fn995yht$5fqZKGNHTG/P6gp7m3YAmw/o9UziYvRz4U8sykuuldQ=",
+            "last_login": "2023-05-02T14:02:55.686Z",
+            "is_superuser": false,
+            "username": "vervr",
+            "first_name": "v everv",
+            "last_name": "verver",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-05-02T13:54:07.024Z",
+            "password1": "leo2015trier",
+            "password2": "leo2015trier",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "users.newuser",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$b1Nrkm2S9aRqSCXHyiL9OR$vKvXhxl9Z2pVAIBMqN9M39P7xAI5s4yO9ftB/k8k1ac=",
+            "last_login": "2023-05-04T11:53:29.689Z",
+            "is_superuser": false,
+            "username": "ЛеонидКазань",
+            "first_name": "Леонид",
+            "last_name": "Бабкин",
+            "email": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2023-05-04T11:39:17.164Z",
+            "password1": "leo2015trier",
+            "password2": "leo2015trier",
+            "age": null,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+    ]
+    
