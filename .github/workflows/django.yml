@@ -1,0 +1,32 @@
+name: task_manager
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install poetry
+          make install
+      - name: Run linter and tests
+        run: |
+          make lint
+          make test
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: f9543716fbf5ba2d03dc5c7c5565a3e0e6b537bb992f4880f2ea5c6540c8262a
+        with:
+          coverageCommand: make cc-cover
