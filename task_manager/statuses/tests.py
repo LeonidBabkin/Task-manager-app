@@ -85,10 +85,7 @@ class TestUpdateStatus(TestCase):
         }
         response = self.client.post(
             reverse_lazy('status_update',
-                         args=(update_status.id,)),
-                         new_status,
-                         follow=True
-            )
+                         args=(update_status.id,)), new_status, follow=True)
         new_status = TaskStatus.objects.get(pk=1)
         self.assertTrue(new_status.name == 'Almost finished off')
 

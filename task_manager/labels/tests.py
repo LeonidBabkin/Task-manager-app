@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse_lazy
 from task_manager.labels.models import Label
-from task_manager.tasks.models import Task
 from task_manager.users.models import NewUser
 from task_manager.utils import remove_rollbar
 

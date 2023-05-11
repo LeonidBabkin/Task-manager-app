@@ -1,7 +1,6 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse_lazy
 from task_manager.utils import remove_rollbar
-# from task_manager.tasks.filters import TaskFilter
 from task_manager.tasks.models import Task
 from task_manager.users.models import NewUser
 
@@ -172,6 +171,3 @@ class TestTasksList(TestCase):
         self.client.logout()
         response = self.client.get(reverse_lazy('tasks'))
         self.assertEqual(response.status_code, 200)
-
-
-
