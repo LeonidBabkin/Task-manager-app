@@ -118,6 +118,9 @@ DATABASES = {
         'PASSWORD': DB_PASS,
         'HOST': DB_HOST,
         'PORT': DB_PORT,
+        'TEST': {
+            'NAME': 'mytestdatabase',
+        }
     }
 }
 
