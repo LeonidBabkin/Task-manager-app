@@ -36,4 +36,9 @@ cc-cover:
 report-coverage:
 	poetry run coverage report
 
+test-coverage:
+	poetry run coverage run manage.py test
+	poetry run coverage report -m --include=task_manager/* --omit=task_manager/settings.py
+	poetry run coverage xml --include=task_manager/* --omit=task_manager/settings.py
+
 .PHONY: start, lint, migrate, shell, shellplus, validatetemplates, showurls, dev, reinstall, lint, test, testcov, cc-cover, report-coverage
