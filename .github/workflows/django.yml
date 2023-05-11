@@ -28,4 +28,4 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: make cc-cover
+          coverageCommand: report-coverage
