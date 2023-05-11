@@ -65,9 +65,8 @@ class StatusUpdateView(UpdateView):
 class StatusDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('pk')
         context = {}
-        status = TaskStatus.objects.get(id=status_id)
+        status = TaskStatus.objects.get(id=kwargs.get('pk'))
         context['status'] = status
         return render(request, 'statuses/delete_status.html', context)
 

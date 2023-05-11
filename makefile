@@ -31,4 +31,9 @@ cov:
 	poetry run pytest --cov=task_manager
 coverage:
 	poetry run coverage run manage.py test task_manager
-.PHONY: start, lint, migrate, shell, shellplus, validatetemplates, showurls, dev, reinstall, lint, test, testcov
+cc-cover:
+	poetry run coverage xml
+report-coverage:
+	poetry run coverage report
+
+.PHONY: start, lint, migrate, shell, shellplus, validatetemplates, showurls, dev, reinstall, lint, test, testcov, cc-cover, report-coverage
