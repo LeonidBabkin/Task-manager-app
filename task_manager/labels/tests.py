@@ -56,4 +56,3 @@ class TestLabel(TestCase):
         self.assertEqual(str(messages[0]), "Метка успешно удалена")
         label = Label.objects.last()
         self.assertTrue(label.name == 'Имя метки')
- 

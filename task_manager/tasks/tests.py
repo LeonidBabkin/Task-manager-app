@@ -16,7 +16,6 @@ class TaskTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='tasks/create_task.html')
 
-
     def test_create_task_not_logged_in_view(self):
         self.client.logout()
 
@@ -44,7 +43,7 @@ class TaskTest(TestCase):
             reverse_lazy('task_create'),
             new_task,
             follow=True
-        )    
+        )
         tasks = Task.objects.count()
         self.assertEqual(tasks, 11)
         task = Task.objects.last()
@@ -54,7 +53,6 @@ class TaskTest(TestCase):
         self.assertTrue(task.executor.username == 'LevRus')
         self.assertTrue(task.author.username == auth_user.username)
         self.assertTrue(task.labels.count(), 1)
-        
 
     def test_update_task(self):
         update_task = Task.objects.last()
@@ -85,7 +83,6 @@ class TaskTest(TestCase):
         for t in new_task.labels.values():
             self.assertTrue(t['name'] in ['Label 3', 'Готов к полноценной работе.'])
 
-
     def test_delete_task(self):
         delete_task = Task.objects.last()
         auth_user = NewUser.objects.get(pk=delete_task.author.id)
@@ -106,6 +103,7 @@ class TaskTest(TestCase):
 @remove_rollbar
 class TestDetailedTask(TestCase):
     fixtures = ['statuses.json', 'users.json', 'tasks.json', 'labels.json']
+
     def test_detailed_task_view(self):
         detail_task = Task.objects.get(pk=9)
         auth_user = NewUser.objects.get(pk=detail_task.author.id)
@@ -145,6 +143,7 @@ class TestDetailedTask(TestCase):
 @remove_rollbar
 class TestTasksList(TestCase):
     fixtures = ['statuses.json', 'users.json', 'tasks.json', 'labels.json']
+
     def test_tasks_view(self):
         response = self.client.get(reverse_lazy('tasks'))
         self.assertEqual(response.status_code, 200)
@@ -165,7 +164,6 @@ class TestTasksList(TestCase):
     def test_tasks_links(self):
         response = self.client.get(reverse_lazy('tasks'))
         self.assertContains(response, '/tasks/create/')
-        count = Task.objects.count()
         for pk in [5, 6, 7, 9, 22, 30, 35, 52, 54, 71]:
             self.assertContains(response, f'/tasks/{pk}/update/')
             self.assertContains(response, f'/tasks/{pk}/delete/')
@@ -174,5 +172,6 @@ class TestTasksList(TestCase):
         self.client.logout()
         response = self.client.get(reverse_lazy('tasks'))
         self.assertEqual(response.status_code, 200)
+
 
 

@@ -7,6 +7,7 @@ from task_manager.statuses.models import TaskStatus
 @remove_rollbar
 class TestStatusesList(TestCase):
     fixtures = ['statuses.json', 'users.json', 'tasks.json', 'labels.json']
+
     def test_statuses_view(self):
         response = self.client.get(reverse_lazy('statuses'))
 
@@ -41,6 +42,7 @@ class TestStatusesList(TestCase):
 @remove_rollbar
 class TestCreateStatus(TestCase):
     fixtures = ['statuses.json', 'users.json', 'tasks.json', 'labels.json']
+
     def test_create_status(self):
         self.client.login()
         response = self.client.get(reverse_lazy('status_create'))
@@ -51,7 +53,7 @@ class TestCreateStatus(TestCase):
             'name': 'New Status',
         }
         response = self.client.get(reverse_lazy('status_create'))
- 
+
         self.assertEqual(response.status_code, 200)
         last_status = TaskStatus.objects.last()
         self.assertFalse(last_status.name == 'New Status')
@@ -68,6 +70,7 @@ class TestCreateStatus(TestCase):
 @remove_rollbar
 class TestUpdateStatus(TestCase):
     fixtures = ['statuses.json', 'users.json', 'tasks.json', 'labels.json']
+
     def test_update_status(self):
         self.client.login()
         response = self.client.get(
@@ -81,10 +84,11 @@ class TestUpdateStatus(TestCase):
             'name': 'Almost finished off',
         }
         response = self.client.post(
-            reverse_lazy('status_update', 
+            reverse_lazy('status_update',
                          args=(update_status.id,)),
                          new_status,
-                         follow=True)
+                         follow=True
+            )
         new_status = TaskStatus.objects.get(pk=1)
         self.assertTrue(new_status.name == 'Almost finished off')
 
