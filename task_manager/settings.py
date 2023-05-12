@@ -19,7 +19,7 @@ from django.utils.translation import gettext_lazy as tr
 load_dotenv()
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings.development")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings.development")
 # from django.core.wsgi import get_wsgi_application
 # application = get_wsgi_application()
 # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE']= 'true'
@@ -102,28 +102,28 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 LOGIN_URL = 'login'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         # 'NAME': BASE_DIR / DB_NAME ,
-#         'NAME': DB_NAME,
-#         'USER': DB_USER,
-#         'PASSWORD': DB_PASS,
-#         'HOST': DB_HOST,
-#         'PORT': DB_PORT,
-#         'TEST': {
-#             'NAME': 'mytestdatabase',
-#         }
-#     }
-# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': BASE_DIR / DB_NAME ,
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASS,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
+        'TEST': {
+            'NAME': 'mytestdatabase',
+        }
+    }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='sqlite:///db.sqlite3',
+#         conn_max_age=600,
+#     )
+# }
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
