@@ -212,19 +212,15 @@ toml = ["tomli"]
 
 [[package]]
 name = "dj-database-url"
-version = "2.0.0"
+version = "0.5.0"
 description = "Use Database URLs in your Django Application."
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "dj-database-url-2.0.0.tar.gz", hash = "sha256:a35a9f0f43775ca6f90d819dc456233ef7bcc76b47377d5d908b75c7eb320624"},
-    {file = "dj_database_url-2.0.0-py3-none-any.whl", hash = "sha256:9c9e5f7224f62635a787e9cc3c6762c9be2b19541a21e3c08fa573bd01609b4b"},
+    {file = "dj-database-url-0.5.0.tar.gz", hash = "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163"},
+    {file = "dj_database_url-0.5.0-py2.py3-none-any.whl", hash = "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"},
 ]
-
-[package.dependencies]
-Django = ">=3.2"
-typing-extensions = ">=3.10.0.0"
 
 [[package]]
 name = "django"
@@ -707,18 +703,6 @@ files = [
 ]
 
 [[package]]
-name = "typing-extensions"
-version = "4.5.0"
-description = "Backported and Experimental Type Hints for Python 3.7+"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "typing_extensions-4.5.0-py3-none-any.whl", hash = "sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4"},
-    {file = "typing_extensions-4.5.0.tar.gz", hash = "sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb"},
-]
-
-[[package]]
 name = "tzdata"
 version = "2023.3"
 description = "Provider of IANA time zone data"
@@ -765,4 +749,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "eecd00fd48cae1d7393587cf44aa362203c9e691fb9ff3c7049f8407a0a34660"
+content-hash = "4b5a59f58c0f80af9fee1f5a8a65cb69a17c88fed8530234cfdb96a4c73bfb9d"
