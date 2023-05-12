@@ -26,7 +26,7 @@ lint:
 	poetry run flake8
 
 test:
-	poetry run python3 manage.py test
+	poetry run python3 manage.py test --keepdb
 cov:
 	poetry run pytest --cov=task_manager
 coverage:
@@ -37,7 +37,7 @@ report-coverage:
 	poetry run coverage report
 
 test-coverage:
-	poetry run coverage run manage.py test
+	poetry run coverage run manage.py test --keepdb
 	poetry run coverage report -m --include=task_manager/* --omit=task_manager/settings.py
 	poetry run coverage xml --include=task_manager/* --omit=task_manager/settings.py
 
