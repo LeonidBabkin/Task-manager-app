@@ -40,7 +40,7 @@ DB_PASS = parsed_url.password
 
 DEBUG = os.getenv('DEBUG', False)
 ALLOWED_HOSTS = ['*', 'webserver', 'localhost', '27.0.0.1', DB_HOST]
-SECRET_KEY = os.getenv('SECRET_KEY', 'cneji')
+SECRET_KEY = os.getenv('SECRET_KEY', 'OTHER_SECRET')
 
 CSRF_TRUSTED_ORIGINS = [
     'https://task-manager-app-kzsy.onrender.com']
