@@ -19,7 +19,7 @@ from django.utils.translation import gettext_lazy as tr
 load_dotenv()
 
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings")
 # from django.core.wsgi import get_wsgi_application
 # application = get_wsgi_application()
 # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE']= 'true'
