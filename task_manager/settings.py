@@ -19,7 +19,7 @@ from django.utils.translation import gettext_lazy as tr
 load_dotenv()
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "task_manager.settings.development")
 # from django.core.wsgi import get_wsgi_application
 # application = get_wsgi_application()
 # os.environ['DJANGO_ALLOW_ASYNC_UNSAFE']= 'true'
@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 LOGIN_URL = 'login'
 
-POSTGRESDATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': BASE_DIR / DB_NAME ,
@@ -122,11 +122,11 @@ POSTGRESDATABASES = {
 #         conn_max_age=600,
 #     )
 # }
-DATABASES = {
-    "default": dj_database_url.parse(
-        os.getenv("POSTGRESDATABASES", f"sqlite:///{BASE_DIR/'db.sqlite3'}"),
-    )
-}
+# DATABASES = {
+#     "default": dj_database_url.parse(
+#         os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR/'db.sqlite3'}"),
+#     )
+# }
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)
 # Password validation
