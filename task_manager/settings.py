@@ -102,20 +102,20 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 LOGIN_URL = 'login'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': BASE_DIR / DB_NAME ,
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'PASSWORD': DB_PASS,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
-        'TEST': {
-            'NAME': 'mytestdatabase',
-        }
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         # 'NAME': BASE_DIR / DB_NAME ,
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'PASSWORD': DB_PASS,
+#         'HOST': DB_HOST,
+#         'PORT': DB_PORT,
+#         'TEST': {
+#             'NAME': 'mytestdatabase',
+#         }
+#     }
+# }
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///db.sqlite3',
