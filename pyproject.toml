@@ -19,7 +19,8 @@ pytest-cov = "^4.0.0"
 pytest-xdist = "^3.2.1"
 django-filter = "^23.2"
 rollbar = "^0.16.3"
-dj-database-url = "^2.0.0"
+dj-database-url = "^0.5.0"
+
 
 [tool.poetry.dev-dependencies]
 flake8 = "^6.0.0"
