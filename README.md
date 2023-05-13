@@ -1,4 +1,4 @@
-![alt text]([http://url/to/img.png](https://github.com/LeonidBabkin/python-project-52.wiki.git))
+![Task manager image](https://media.wired.com/photos/5ae0d5ae3f3b183561144216/master/w_2560%2Cc_limit/google-tasks.jpg)
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/run-tests/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
