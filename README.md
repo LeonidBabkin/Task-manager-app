@@ -1,4 +1,4 @@
-                                     ### A simple and flexible task management web application:
+                                         A simple and flexible task management web application:
 
 ![Task manager image](https://hygger.io/wp-content/uploads/2019/01/02.-Break-down-your-tasks-to-smaller-time-units.jpg)                               [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/run-tests/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
