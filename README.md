@@ -1,4 +1,4 @@
-https://github.com/LeonidBabkin/python-project-52.wiki.git
+![alt text]([http://url/to/img.png](https://github.com/LeonidBabkin/python-project-52.wiki.git))
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/run-tests/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
