@@ -9,8 +9,6 @@
 
 You can get familiar with the task manager app on the [Render.com](https://task-manager-app-kzsy.onrender.com).
 
-```
-
 The task management web application built with Python and Django framework. It allows you to set tasks, assign executors and change their statuses. Registration and authentication are required. 
 
 To provide users with a convenient, adaptive, modern interface, the project uses the Bootstrap framework.
@@ -19,7 +17,6 @@ The frontend is rendered on the backend. This means that the page is built by th
 
 PostgreSQL is used as the object-relational database system.
 
-```
 
 ### Features
 
@@ -57,14 +54,20 @@ The project uses the Poetry dependency manager. You can install Poetry via its o
 
 PostgreSQL is used as the main object-relational database system. You have to install it  via [website](https://www.postgresql.org/download/)
 
-### Utilization
+###  Application installation
 
 ```
+git clone https://github.com/LeonidBabkin/python-project-52.git && cd python-project-52
+make install
+make migrate
+
+```
+
+### Utilization
 
 Start the Gunicorn Web-server by running --> By default, the server will be available at http://0.0.0.0:8000.; 
 Start it local in development mode --> The dev server will be at http://127.0.0.1:8000.;
 
-```
 
 
 
