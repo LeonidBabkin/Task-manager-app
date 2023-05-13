@@ -57,7 +57,8 @@ PostgreSQL is used as the main object-relational database system. You have to in
 ###  Application installation
 
 ```
-git clone https://github.com/LeonidBabkin/python-project-52.git && cd python-project-52
+git clone https://github.com/LeonidBabkin/python-project-52.git
+cd python-project-52
 make install
 make migrate
 
