@@ -65,7 +65,17 @@ make migrate
 
 Start the Gunicorn Web-server by running --> By default, the server will be available at http://0.0.0.0:8000;
 
+```
+make start
+
+```
+
 Start it local in development mode --> The dev server will be at http://127.0.0.1:8000;
+
+```
+make dev
+
+```
 
 
 
