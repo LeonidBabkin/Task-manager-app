@@ -1,4 +1,4 @@
-![Task manager image]([https://media.wired.com/photos/5ae0d5ae3f3b183561144216/master/w_2560%2Cc_limit/google-tasks.jpg](https://hygger.io/wp-content/uploads/2019/01/02.-Break-down-your-tasks-to-smaller-time-units.jpg))
+![Task manager image](https://hygger.io/wp-content/uploads/2019/01/02.-Break-down-your-tasks-to-smaller-time-units.jpg)
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/run-tests/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
