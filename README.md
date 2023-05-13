@@ -9,13 +9,17 @@
 
 You can get familiar with the task manager app on the [Render.com](https://task-manager-app-kzsy.onrender.com).
 
-**The task management web application built with Python and Django framework. It allows you to set tasks, assign executors and change their statuses. Registration and authentication are required. 
+```
+
+The task management web application built with Python and Django framework. It allows you to set tasks, assign executors and change their statuses. Registration and authentication are required. 
 
 To provide users with a convenient, adaptive, modern interface, the project uses the Bootstrap framework.
 
 The frontend is rendered on the backend. This means that the page is built by the DjangoTemplates backend, which returns prepared HTML. And this HTML is rendered by the server.
 
-PostgreSQL is used as the object-relational database system.**
+PostgreSQL is used as the object-relational database system.
+
+```
 
 ### Features
 
@@ -55,12 +59,11 @@ PostgreSQL is used as the main object-relational database system. You have to in
 
 ### Utilization
 
-```mermaid
-graph TD;
-    Utilization-->Start the Gunicorn Web-server by running;
-    Utilization-->start it local in development mode;
-    Start the Gunicorn Web-server by running-->By default, the server will be available at http://0.0.0.0:8000.;
-    start it local in development mode-->The dev server will be at http://127.0.0.1:8000.;
 ```
+
+Start the Gunicorn Web-server by running-->By default, the server will be available at http://0.0.0.0:8000.;Start it local in development mode-->The dev server will be at http://127.0.0.1:8000.;
+
+```
+
 
 
