@@ -1,4 +1,4 @@
-##                          A simple and flexible task management web application:
+##                          A simple and flexible task management web application
 
 ![Task manager image](https://hygger.io/wp-content/uploads/2019/01/02.-Break-down-your-tasks-to-smaller-time-units.jpg)                               
 [![Actions Status](https://github.com/LeonidBabkin/python-project-52/workflows/hexlet-check/badge.svg)](https://github.com/LeonidBabkin/python-project-52/actions)
@@ -58,15 +58,19 @@ PostgreSQL is used as the main object-relational database system. You have to in
 
 ```
 git clone https://github.com/LeonidBabkin/python-project-52.git
+
 cd python-project-52
+
 make install
+
 make migrate
 
 ```
 
 ### Utilization
 
-Start the Gunicorn Web-server by running --> By default, the server will be available at http://0.0.0.0:8000.; 
+Start the Gunicorn Web-server by running --> By default, the server will be available at http://0.0.0.0:8000.;
+
 Start it local in development mode --> The dev server will be at http://127.0.0.1:8000.;
 
 
