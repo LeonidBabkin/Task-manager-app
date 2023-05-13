@@ -9,13 +9,7 @@
 
 You can get familiar with the task manager app on the [Render.com](https://task-manager-app-kzsy.onrender.com).
 
-The task management web application built with Python and Django framework. It allows you to set tasks, assign executors and change their statuses. Registration and authentication are required. 
-
-To provide users with a convenient, adaptive, modern interface, the project uses the Bootstrap framework.
-
-The frontend is rendered on the backend. This means that the page is built by the DjangoTemplates backend, which returns prepared HTML. And this HTML is rendered by the server.
-
-PostgreSQL is used as the object-relational database system.
+Task Manager is a task management system similar to http://www.redmine.org/. It allows you to set tasks, assign performers and change their statuses. To work with the system, registration and authentication are required:
 
 
 ### Features
