@@ -14,6 +14,8 @@ from django.urls import reverse
 
 class TasksView(FilterView, LoginRequiredMixin):
     model = Task
+    ordering = ['id']
+    paginate_by = 10
     filterset_class = TasksFilterForm
     template_name = 'tasks.html'
     context_object_name = "tasks"
