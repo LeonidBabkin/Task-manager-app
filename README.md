@@ -70,7 +70,7 @@ make start
 
 ```
 
-Start it local in development mode --> The dev server will be at http://127.0.0.1:8000;
+Start it locally in development mode --> The dev server will be at http://127.0.0.1:8000;
 
 ```
 make dev
